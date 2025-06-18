@@ -36,6 +36,10 @@ if (product != null) {
 		<b>설명:</b>
 		<%=product.getDescription()%>
 	</p>
+	<p>
+		<b>이미지:</b>
+		<%=product.getProductImage()%>
+	</p>
 </div>
 <%
 } else {
