@@ -12,7 +12,7 @@
 request.setCharacterEncoding("UTF-8");
 
 String filename = "";
-String realFolder = "C:\\Users\\awon0\\Desktop\\sec_project\\sec_project\\JSP_UNIV_Project\\SchoolProject_KTK_CAW\\src\\main\\webapp\\resources\\images";
+String realFolder = request.getServletContext().getRealPath("/resources/images");
 int maxSize = 5 * 1024 * 1024;
 String encType = "utf-8";
 

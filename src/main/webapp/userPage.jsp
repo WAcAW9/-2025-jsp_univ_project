@@ -119,7 +119,7 @@
 								<img src="./resources/images/<%=rs.getString("FoodImg") %>" style="width:100%; height:100%"/>
 							<div class="card-body">
 								<p class="card-text"><h5><b><%=rs.getString("FoodName") %></b></h5>
-								<p class="card-text"><%=rs.getString("FoodDescription")%></p>
+								<p class="card-text"><%=rs.getString("FoodInfo")%></p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 									<!-- button에서 a로 바꿈 -->

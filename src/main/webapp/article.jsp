@@ -52,7 +52,7 @@
 					<p><%=rs.getString("FoodInfo") %></p>
 					<h2 class="display-5 link-body-emphasis mb-1"><%=rs.getString("FoodName") %></h2>
 					<p class="blog-post-meta">
-						<%=rs.getDate("UploadDate")  %> | <a href="#"><%=rs.getString("Author")%></a>  <!-- 사용자 링크 -->
+						<%=rs.getDate("UploadDate")  %> | <%=rs.getString("Author")%>
 					</p>
 					<hr>
 				
@@ -155,10 +155,8 @@
 				
 				<!-- 작성자에 대한 정보 -->
 					<div class="p-4 mb-3 bg-body-tertiary rounded">
-						<h4 class="fst-italic"><a href="#"><%=rs.getString("Author") %></a></h4>
-						<p class="mb-0">Customize this section to tell your visitors a
-							little bit about your publication, writers, content, or something
-							else entirely. Totally up to you.</p>
+						<h4 class="fst-italic"><%=rs.getString("Author") %></h4>
+						<p class="mb-0"><%=rs.getString("Author") %>님의 "<%=rs.getString("FoodName") %>"레시피</p>
 					</div>
 					<!-- 다른 게시글 -->
 					<div>					
@@ -176,14 +174,16 @@
 						%>
 							<li><a
 								class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-								href="#"> <svg aria-hidden="true"
-										class="bd-placeholder-img " height="96"
-										preserveAspectRatio="xMidYMid slice" width="100%"
-										xmlns="http://www.w3.org/2000/svg">
-										<rect width="100%" height="100%" fill="#777"></rect></svg>
+								> 
 									<div class="col-lg-8">
 										<h6 class="mb-0"><%=rs2.getString("FoodName") %></h6>
-										<small class="text-body-secondary"><%=rs2.getString("UploadDate") %></small>
+										<div class="btn-group">
+										<a href= "./article.jsp?id=<%=rs2.getString("FoodCode")%>" type="button" class="btn btn-sm btn-outline-secondary">View</a>
+										</div>
+										<small class="text-body-secondary"><%=rs2.getString("UploadDate") %>
+										
+										</small>
+										
 									</div>
 							</a></li>
 							<%count++;} %>

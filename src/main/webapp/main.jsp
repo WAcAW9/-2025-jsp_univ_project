@@ -62,13 +62,14 @@ case "mid":
 	Level = "중간 관리자";
 	break;
 default:
-	Level = "확인되지 않은 level";
 	break;
 }  
 %>
 <% if (isLogIn) { %>
 	<h2>환영합니다 <%= userName_check %>님</h2>
 	<p>등급: <%= Level %></p>
+<% }else { %>
+    continue;
 <% } %>
 					<% if (isLogIn) { %>
     <a class="btn btn-sm btn-outline-danger" href="Login/logout.jsp">Sign out</a>
@@ -80,8 +81,12 @@ default:
 		</div>
 		
 	</main>
+	<% if (isLogIn) { %>
+    <jsp:include page="/layout/footer.jsp" />
+<% } else { %>
+    <jsp:include page="/layout/footer.jsp" />
+<% } %>
 	
-	<jsp:include page="/layout/footer.jsp" />
 
 </body>
 </html>

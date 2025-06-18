@@ -1,0 +1,111 @@
+-- 음식 테이블
+CREATE TABLE FoodList (
+    FoodCode INT AUTO_INCREMENT PRIMARY KEY,
+    FoodName VARCHAR(50),
+    FoodImg VARCHAR(500),
+    FoodInfo VARCHAR(500),
+    FoodDescription VARCHAR(5000),
+    Spicy INT,
+    Sweet INT,
+    Salty INT,
+    Savory INT,
+    Umami INT,
+    UploadDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Author VARCHAR(50)
+);
+
+-- 사용자 테이블
+CREATE TABLE User (
+    UserCode INT AUTO_INCREMENT PRIMARY KEY, 
+    UserID VARCHAR(50) NOT NULL UNIQUE, 
+    UserPW VARCHAR(255) NOT NULL,   -- 비밀번호는 해시를 고려하여 길이 여유 있게
+    UserName VARCHAR(50) NOT NULL,
+    UserAge INT,
+    UserAddress VARCHAR(200)        -- 주소는 문자열이 적합
+);
+
+-- 사용자 추가 정보 테이블
+CREATE TABLE UserInfo (
+    UserCode INT PRIMARY KEY,
+    Level VARCHAR(10) NOT NULL CHECK (Level IN ('nomal', 'admin', 'mid')),
+    CONSTRAINT fk_usercode FOREIGN KEY (UserCode)
+        REFERENCES User(UserCode)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- 사용자 선호도 테이블
+CREATE TABLE UserTaste (
+    UserCode INT PRIMARY KEY,
+    UserSpicy INT,
+    UserSweet INT,
+    UserSalty INT,
+    UserSavory INT,
+    UserUmami INT,
+    CONSTRAINT fk_usertaste_usercode FOREIGN KEY (UserCode)
+        REFERENCES UserInfo(UserCode)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- 등급 요청 테이블
+CREATE TABLE LevelRequest (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    UserCode INT,
+    UserLevel VARCHAR(10) CHECK (UserLevel IN ('nomal', 'admin', 'mid')),
+    Reason TEXT NOT NULL,
+    RequestDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_request_user FOREIGN KEY (UserCode)
+        REFERENCES UserInfo(UserCode)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- 좋아요 테이블
+CREATE TABLE LikeArticle (
+    UserCode INT,
+    FoodCode INT,
+    PRIMARY KEY (UserCode, FoodCode),
+    FOREIGN KEY (UserCode) REFERENCES User(UserCode)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (FoodCode) REFERENCES FoodList(FoodCode)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- 포인트 테이블
+CREATE TABLE UserPointCount (
+    UserCode INT PRIMARY KEY,
+    Point INT DEFAULT 0,
+    CONSTRAINT fk_userinfo_code FOREIGN KEY (UserCode)
+        REFERENCES UserInfo(UserCode)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- 포인트 상품 테이블
+CREATE TABLE PointProduct (
+    ProductCode VARCHAR(20) PRIMARY KEY,
+    ProductName VARCHAR(100) NOT NULL,
+    ProductPrice INT NOT NULL,
+    ProductImage VARCHAR(200),
+    RemainingQuantity INT,
+    Description TEXT
+);
+
+-- 주문 테이블
+CREATE TABLE Orders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    UserCode INT,
+    ProductCode VARCHAR(20),
+    Quantity INT,
+    OrderDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CustomerInfo TEXT,
+    FOREIGN KEY (UserCode) REFERENCES User(UserCode)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (ProductCode) REFERENCES PointProduct(ProductCode)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);

@@ -77,6 +77,7 @@
                 <li class="list-group-item">고소함: <%= savory %></li>
                 <li class="list-group-item">감칠맛: <%= umami %></li>
             </ul>
+            <a href= "../article.jsp?id=<%=foodCode%>" type="button" class="btn btn-sm btn-outline-secondary">View</a>
         </div>
     <% } %>
 
