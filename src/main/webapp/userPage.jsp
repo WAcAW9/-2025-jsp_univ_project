@@ -79,11 +79,12 @@
 							<p> 회원 등급 : <%=Level %></p>
 <!-- 
 						<a class="btn btn-secondary" href="#">좋아요 누른 레시피</a> -->
-						<% if(Level=="중간 관리자"||Level == "관리자"){ %>
-						<a href="#" class="btn btn-primary my-2">내가 쓴 레시피</a> 
+						<a href="recommend/UpdateUserTaste.jsp" class="btn btn-secondary my-2">내 맛 선호도 수정</a>
+						<% if(Level=="일반 회원"){ %>
+						<a href="Login/RequestLevelChange.jsp" class="btn btn-primary my-2">회원 등급 업그레이드 신청</a> 
 						<%} %>
 						<% if(Level == "관리자"){ %>
-						<a href="#" class="btn btn-secondary my-2">관리자 페이지</a>
+						<a href="Login/UpdateUserLevel.jsp" class="btn btn-secondary my-2">관리자 페이지</a>
 						<%} %>
 				</div>
 		</section>
