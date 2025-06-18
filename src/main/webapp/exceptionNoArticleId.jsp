@@ -7,7 +7,7 @@
 <title>게시글 아이디 오류</title>
 </head>
 <body>
-	<jsp:include page="/layout/header.jsp" />
+	<jsp:include page="/layout/header2.jsp" />
 	
 	<div class="container py-4">
 		<div class="p-5 mb-4 bg-body-tertiary">

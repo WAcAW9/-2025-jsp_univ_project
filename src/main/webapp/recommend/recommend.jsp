@@ -56,12 +56,15 @@
 <body class="container mt-5">
     <jsp:include page="/layout/header.jsp" />
 
-    <h2 class="mb-4">KNN 기반 음식 추천</h2>
+    <h2 class="mb-4">내 취향으로 음식 추천</h2>
 
     <!-- 추천 버튼 -->
     <form method="post">
         <button type="submit" class="btn btn-primary">추천받기</button>
     </form>
+    <!-- 취향 변경 버튼 -->
+    <a href="../recommend/UpdateUserTaste.jsp" class="btn btn-warning mt-4">내 음식 취향 변경하기</a>
+    
 
     <!-- 추천 결과 -->
     <% if (foodCode != -1) { %>
@@ -77,6 +80,7 @@
         </div>
     <% } %>
 
+<br><br>
     <a href="../main.jsp" class="btn btn-secondary mt-4">메인으로</a>
 
     <jsp:include page="/layout/footer.jsp" />

@@ -2,7 +2,17 @@
 <%@ page import="dao.PointProductRepository"%>
 <%@ page import="dto.PointProduct"%>
 <%@ page import="java.util.*"%>
-
+<%
+    String userCode_check = (String) session.getAttribute("userCode");
+    String userName_check = (String) session.getAttribute("userName");
+    String level_check = (String) session.getAttribute("level");
+    boolean isLogIn = userCode_check != null && userName_check != null && level_check != null;
+    
+%>
+									<% if (!isLogIn) {
+   response.sendRedirect("../Login/login.jsp");
+        return;
+} %>
 <%
 PointProductRepository dao = PointProductRepository.getInstance();
 List<PointProduct> pointProducts = dao.getAllProducts();
