@@ -29,7 +29,7 @@
 </head>
 <body>
 	<%@ include file="connection.jsp" %>
-	<jsp:include page="/layout/header.jsp" />
+	<jsp:include page="/layout/header2.jsp" />
 	
 	<main>
 	<!-- 검색 부분 -->

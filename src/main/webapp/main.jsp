@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<jsp:include page="/layout/header.jsp" />
+	<jsp:include page="/layout/header2.jsp" />
 	
 	<main class="container">
 		<div
@@ -30,12 +30,12 @@
 				"오늘의 레시피"</b></h1>
 				<p class="lead my-3">오늘의 레시피는 사용자 맞춤 추천 레시피 웹사이트입니다. 
 				당신에게 딱 맞춘 나만의 레시피를 지금 찾아보세요!</p>
-				<p class="lead mb-0">
+				<p class="">
 				
 									<% if (!isLogIn) { %>
     <a href="Login/register.jsp" class="text-body-emphasis fw-bold">회원가입 >></a>
 <% } else { %>
-    <a href="Test.jsp" class="btn btn-outline-primary fw-bold">둘러보기</a>
+    <a href="recommend/recommend.jsp" class="btn btn-outline-primary fw-bold">음식 추천 받으러 가기</a>
 <% } %>
 
 				</p>

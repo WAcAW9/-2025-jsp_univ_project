@@ -24,7 +24,7 @@
 
 <body class="bg-body-tertiary">
 
-	<jsp:include page="/layout/header.jsp" />
+	<jsp:include page="/layout/header2.jsp" />
 
 	<div class="container">
 		<main>			
